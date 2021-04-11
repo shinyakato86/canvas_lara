@@ -39,10 +39,10 @@
     </div>
   </div>
 
-  <input type="file" name="image">
+  <input id="input_canvas" type="hidden" name="input_canvas" value="">
 
   <div class="form-group mt-5">
-        {{ Form::submit('作成する', ['class' => 'btn btn-secondary']) }}
+        <btn class="btn btn-secondary" id="submitBtn">投稿する</btn>
     </div>
     {{ Form::close() }}
     </div>

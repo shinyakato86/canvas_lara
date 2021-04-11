@@ -74,7 +74,16 @@ $(function () {
     // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, cnvWidth, cnvHeight);
-  }
+  } // canvasを画像で保存
+
+
+  $("#submitBtn").click(function () {
+    canvas = document.getElementById('canvas');
+    var form = document.getElementById('illustrationForm');
+    var base64 = canvas.toDataURL("image/jpeg");
+    document.getElementById('input_canvas').value = base64;
+    form.submit();
+  });
 });
 /******/ })()
 ;

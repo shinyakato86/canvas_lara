@@ -8,7 +8,7 @@
   @foreach($illustrations as $illustration)
   <div class="block01_item">
     <a href={{ route('illustration.detail', ['id' =>  $illustration->id]) }} class="btn-02-s">
-      <img src="data:image/png;base64,{{ $illustration->filename }}">
+      <img src="{{ $illustration->filename }}">
     </a>
 
     @auth

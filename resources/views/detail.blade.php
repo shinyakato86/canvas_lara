@@ -5,7 +5,7 @@
 <div class="block02">
 
 <div class="block02_img">
-<img src="data:image/png;base64,{{ $illustration->filename }}">
+<img src="{{ $illustration->filename }}">
 <p>Posted by {{ $user_name->name }}</p>
 </div>
 
