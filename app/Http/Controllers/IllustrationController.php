@@ -26,11 +26,11 @@ public function __construct()
 
 public function index(Request $request)
 {
-    $illustrations = Illustration::get();
+    //$illustrations = Illustration::get();
 
-    $reviews = Illustration::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+    $illustrations = Illustration::withCount('likes')->orderBy('id', 'desc')->paginate(12);
     $param = [
-        'reviews' => $reviews,
+        'illustrations' => $illustrations,
     ];
 
     return view('index', compact('illustrations', $param));
@@ -62,11 +62,14 @@ public function index(Request $request)
         $illustration = new Illustration;
         $id = \Auth::user();
 
-        $image = base64_encode(file_get_contents($request->image->getRealPath()));
+        //$image = base64_encode(file_get_contents($request->image->getRealPath()));
+        //$illustration->filename = $image;
+
+        $image = base64_encode(request('input_canvas'));
 
         $illustration->comment = request('comment');
+        $illustration->filename = request('input_canvas');
         $illustration->user_id = $id->id;
-        $illustration->filename = $image;
 
         $illustration->save();
 
@@ -214,7 +217,7 @@ public function index(Request $request)
     //5.この投稿の最新の総いいね数を取得
     $illustration_likes_count = Illustration::withCount('likes')->findOrFail($illustration_id)->likes_count;
     $param = [
-        'illustration_likes_count' => $illustration_likes_count,
+        'illustration_likes_count' => $illustration_likes_count
     ];
     return response()->json($param); //6.JSONデータをjQueryに返す
 }
