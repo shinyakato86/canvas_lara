@@ -31,6 +31,8 @@ Route::post('/illustration/update/{id}', 'App\Http\Controllers\IllustrationContr
 
 Route::get('/illustration/{id}', 'App\Http\Controllers\IllustrationController@show')->name('illustration.detail');
 
-Route::post('/illustration/{id}/comments', 'App\Http\Controllers\IllustrationController@addComment')->name('illustration.addComment');
+Route::post('/illustration/comments/{id}', 'App\Http\Controllers\IllustrationController@addComment')->name('illustration.addComment');
 
 Route::delete('/illustration/{id}', 'App\Http\Controllers\IllustrationController@destroy')->name('illustration.destroy');
+
+Route::post('/like', 'App\Http\Controllers\IllustrationController@like')->name('illustration.like');

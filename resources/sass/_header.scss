@@ -1,0 +1,28 @@
+/* ===========================================================================
+  header
+============================================================================= */
+.header {
+	background-color: #fff;
+  height: 54px;
+  border-bottom: 1px solid rgba(219,219,219,1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.header_logo {
+	@include mq(s) {
+		width: 45%;
+	};
+}
+.breadcrumb {
+  background:transparent;
+}
+.breadcrumb-item > a {
+  color: #333;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: #6c757d;
+  content: ">";
+}

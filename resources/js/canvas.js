@@ -7,7 +7,7 @@ $(function(){
     // 変数宣言
     const cnvWidth = 500;
     const cnvHeight = 500;
-    var cnvColor = "255, 0, 0, 1";  // 線の色
+    var cnvColor = "0, 0, 0, 1";  // 線の色
     var cnvBold = 5;  // 線の太さ
     var clickFlg = 0;  // クリック中の判定 1:クリック開始 2:クリック中
     var bgColor = "rgb(255,255,255)";
@@ -71,25 +71,6 @@ $(function(){
       // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
       ctx.fillStyle = bgColor;
       ctx.fillRect(0,0,cnvWidth,cnvHeight);
-    }
-
-    function saveImage() {
-      var canvasData = canvas.toDataURL("image/png");
-      var xmlHttpReq = false;
-    
-      if (window.XMLHttpRequest) {
-        ajax = new XMLHttpRequest();
-      }
-      else if (window.ActiveXObject) {
-        ajax = new ActiveXObject("Microsoft.XMLHTTP");
-      }
-    
-      ajax.open("POST", "/illustration", false);
-      ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      ajax.onreadystatechange = function() {
-        console.log(ajax.responseText);
-      }
-      ajax.send("imgData=" + canvasData);
     }
 
   });

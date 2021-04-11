@@ -10,7 +10,7 @@ $(function () {
 
   var cnvWidth = 500;
   var cnvHeight = 500;
-  var cnvColor = "255, 0, 0, 1"; // 線の色
+  var cnvColor = "0, 0, 0, 1"; // 線の色
 
   var cnvBold = 5; // 線の太さ
 
@@ -74,26 +74,6 @@ $(function () {
     // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, cnvWidth, cnvHeight);
-  }
-
-  function saveImage() {
-    var canvasData = canvas.toDataURL("image/png");
-    var xmlHttpReq = false;
-
-    if (window.XMLHttpRequest) {
-      ajax = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-      ajax = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    ajax.open("POST", "/illustration", false);
-    ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    ajax.onreadystatechange = function () {
-      console.log(ajax.responseText);
-    };
-
-    ajax.send("imgData=" + canvasData);
   }
 });
 /******/ })()

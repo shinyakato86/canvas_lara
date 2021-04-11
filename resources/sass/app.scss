@@ -1,50 +1,84 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
-
-.option{
-  width: 250px;
-}
-.color > a{
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-.black{
-  background-color: #000000;
-}
-.red{
-  background-color: #ff0000;
-}
-.blue{
-  background-color: #0000ff;
-}
-
-@import "variables";
+@import "mixin";
 @import "base";
-@import "container";
-@import "grid";
-@import "navbar";
-@import "photo";
-@import "photo-detail";
-@import "photo-form";
-@import "button";
-@import "form";
-@import "tab";
 @import "footer";
-@import "errors";
-@import "pagination";
-@import "panel";
-@import "title";
-@import "loader";
-@import "message";
+@import "header";
+@import "util";
+
+.btn {
+  font-size: 1.4rem;
+}
 
 .contentsArea {
-  padding-top: 100px;
+  max-width: 1000px;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 60px 0 90px;
+}
+
+.block01 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block01_item {
+  width: calc((100% - 40px) / 3 - 0.1px);
+  margin-right: 20px;
+  &:nth-of-type(3n) {
+    margin-right: 0;
+  }
+  &:nth-of-type(n+4) {
+    margin-top: 20px;
+  }
+}
+
+.block02 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block02_img {
+  width: calc((100% - 20px) / 2 - 0.1px);
+}
+
+.block02_item {
+  width: calc((100% - 20px) / 2 - 0.1px);
+}
+
+.block02_title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.commentArea {
+  padding: 10px;
+  & + & {
+    border-top: 1px solid #dbdbdb;
+    margin-top: 5px;
+  }
+}
+
+.commentArea_name {
+  color: #999;
+  margin-top: 3px;
+}
+
+.liked {
+  color: pink;
+}
+
+.like-toggle {
+  cursor: pointer;
 }

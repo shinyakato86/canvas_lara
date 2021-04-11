@@ -15,9 +15,16 @@ class CreateLikesTable extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('illustrations_id');
-            $table->integer('user_id');
             $table->timestamps();
+
+            $table->foreignId('user_id') //usersテーブルの外部キー設定
+            ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
+            ->onDelete('cascade'); //削除時のオプション
+
+            $table->foreignId('illustration_id') //同じことをreviewsテーブルとも
+                ->constrained()
+                ->onDelete('cascade');
+
         });
     }
 

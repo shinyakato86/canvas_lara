@@ -2,14 +2,7 @@
 
 @section('content')
 
-<div class="contentsArea">
-  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item"><a href={{route( 'index')}}>TOP</a></li>
-      <li class="breadcrumb-item active" aria-current="page">受注案件新規登録</li>
-    </ul>
-  </nav>
-  <section class="section">
+
     <h2 class="heading02">受注案件新規登録</h2>
 
     <div class="formArea">
@@ -22,6 +15,9 @@
       <a href="" class="black" data-color="0, 0, 0, 1"></a>
       <a href="" class="red" data-color="255, 0, 0, 1"></a>
       <a href="" class="blue" data-color="0, 0, 255, 1"></a>
+      <a href="" class="yellow" data-color="255, 255, 0, 1"></a>
+      <a href="" class="green" data-color="0, 128, 0, 1"></a>
+      <a href="" class="gray" data-color="128, 128, 128, 1"></a>
     </div>
     <div class="bold">
       太さ：
@@ -36,7 +32,7 @@
 
   <div class="row mb-3 align-items-start">
       <div class="col-12">
-      <label>●案件名</label>
+      <label><i class="fas fa-comment mr-1"></i>投稿者コメント</label>
       </div>
     <div class="col-md-10 form-group">
       <input class="form-control" type="text" name="comment" value="" required="" data-error="※入力必須です">
@@ -46,13 +42,12 @@
   <input type="file" name="image">
 
   <div class="form-group mt-5">
-        {{ Form::submit('作成する', ['class' => 'btn-03']) }}
+        {{ Form::submit('作成する', ['class' => 'btn btn-secondary']) }}
     </div>
     {{ Form::close() }}
     </div>
 
 
-    </section>
-</div>
+
 
 @endsection

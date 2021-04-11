@@ -1,7 +1,13 @@
 .footer {
   align-items: center;
-  border-top: 1px solid $grey-4;
+  border-top: 1px solid rgba(219,219,219,1);
   display: flex;
   height: 5rem;
   justify-content: center;
+  padding: 10px 0;
+  margin-top: auto;
+}
+
+.footer_copy {
+  text-align: center;
 }

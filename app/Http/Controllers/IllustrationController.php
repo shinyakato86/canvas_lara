@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Illustration;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -27,7 +28,12 @@ public function index(Request $request)
 {
     $illustrations = Illustration::get();
 
-    return view('index', compact('illustrations'));
+    $reviews = Illustration::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+    $param = [
+        'reviews' => $reviews,
+    ];
+
+    return view('index', compact('illustrations', $param));
 }
 
     /**
@@ -183,5 +189,34 @@ public function index(Request $request)
 
         return redirect()->route('illustration.detail', ['id' => $comment->illustrations_id]);
     }
+
+
+
+
+
+
+
+
+    public function like(Request $request)
+{
+    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
+    $illustration_id = $request->illustration_id; //2.投稿idの取得
+    $already_liked = Like::where('user_id', $user_id)->where('illustration_id', $illustration_id)->first(); //3.
+
+    if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
+        $like = new Like; //4.Likeクラスのインスタンスを作成
+        $like->illustration_id = $illustration_id; //Likeインスタンスにreview_id,user_idをセット
+        $like->user_id = $user_id;
+        $like->save();
+    } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
+        Like::where('illustration_id', $illustration_id)->where('user_id', $user_id)->delete();
+    }
+    //5.この投稿の最新の総いいね数を取得
+    $illustration_likes_count = Illustration::withCount('likes')->findOrFail($illustration_id)->likes_count;
+    $param = [
+        'illustration_likes_count' => $illustration_likes_count,
+    ];
+    return response()->json($param); //6.JSONデータをjQueryに返す
+}
 
 }
