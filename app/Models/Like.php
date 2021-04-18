@@ -15,11 +15,11 @@ class Like extends Model
     return $this->belongsTo(User::class);
   }
 
-    //いいねしている投稿
-    public function post()
-    {
-        return $this->belongsTo(Illustration::class);
-    }
+  //いいねしている投稿
+  public function post()
+  {
+    return $this->belongsTo(Illustration::class);
+  }
 
 
 }

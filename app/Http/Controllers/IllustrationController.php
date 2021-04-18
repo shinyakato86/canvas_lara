@@ -92,7 +92,15 @@ public function index(Request $request)
 
         $comments = Comment::with(['author'])->where('illustrations_id', $id)->get();
 
-        return view('detail', compact('illustration', 'user_name', 'comments'));
+        $illustration_likes_count = Illustration::withCount('likes')->findOrFail($id)->likes_count;
+
+        $param = [
+            'illustration_likes_count' => $illustration_likes_count
+        ];
+
+        $like = Illustration::withCount('likes');
+
+        return view('detail', compact('illustration', 'user_name', 'comments', 'illustration_likes_count', 'param'));
     }
 
     /**

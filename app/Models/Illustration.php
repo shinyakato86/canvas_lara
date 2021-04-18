@@ -12,7 +12,7 @@ class Illustration extends Model
     {
         return $this->hasMany('App\Models\Like');
     }
-    //後でViewで使う、いいねされているかを判定するメソッド。
+    //いいねされているかを判定
     public function isLikedBy($user): bool {
         return Like::where('user_id', $user->id)->where('illustration_id', $this->id)->first() !==null;
     }

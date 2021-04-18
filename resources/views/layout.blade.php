@@ -36,10 +36,10 @@
             <a class="btn-secondary btn" href="{{ route('register') }}">{{ __('新規登録') }}</a>
             </li>
             @endif @else
-            <li class="nav-item dropdown">
-            <a class="btn-secondary btn" href="{{ route('illustration.new') }}">写真投稿</a>
+            <li class="nav-item dropdown  navBtn">
+            <a class="btn-secondary btn mr-5" href="{{ route('illustration.new') }}">写真投稿</a>
               <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-secondary px-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                ID: {{ Auth::user()->name }}でログイン中 <span class="caret"></span>
+                {{ Auth::user()->name }} <span class="caret"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
