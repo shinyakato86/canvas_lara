@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreIllustration;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,7 @@ public function index(Request $request)
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreIllustration $request)
     {
         $illustration = new Illustration;
         $id = \Auth::user();

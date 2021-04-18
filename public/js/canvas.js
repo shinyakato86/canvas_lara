@@ -65,16 +65,17 @@ $(function () {
   }); // canvasを画像で保存
 
   $("#download").click(function () {
-    canvas = document.getElementById('canvas');
-    var base64 = canvas.toDataURL("image/jpeg");
-    document.getElementById("download").href = base64;
+    //canvas = document.getElementById('canvas');
+    //var base64 = canvas.toDataURL("image/jpeg");
+    var img = 'data:application/octet-stream;base64,' + $(this).data("name");
+    $(this).attr('src', img);
   });
 
   function setBgColor() {
     // canvasの背景色を設定(指定がない場合にjpeg保存すると背景が黒になる)
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, cnvWidth, cnvHeight);
-  } // canvasを画像で保存
+  } // フォーム送信
 
 
   $("#submitBtn").click(function () {
@@ -83,6 +84,18 @@ $(function () {
     var base64 = canvas.toDataURL("image/jpeg");
     document.getElementById('input_canvas').value = base64;
     form.submit();
+  });
+});
+$(function () {
+  $("#download").click(function () {
+    //canvas = document.getElementById('canvas');
+    //var base64 = canvas.toDataURL("image/jpeg");
+    //var img = 'data:application/octet-stream;base64,' + $(this).data("name");
+    //$(this).attr('href', img);
+    //var img = reference to image
+    var url = $(this).data("name").replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+    $(this).attr('href', url); // Or perhaps: location.href = url;
+    // Or even setting the location of an <iframe> element, 
   });
 });
 /******/ })()

@@ -37,7 +37,7 @@
             </li>
             @endif @else
             <li class="nav-item dropdown  navBtn">
-            <a class="btn-secondary btn mr-5" href="{{ route('illustration.new') }}">写真投稿</a>
+            <a class="btn-outline-secondary btn mr-5 d-flex align-items-center px-5" href="{{ route('illustration.new') }}"><i class="fas fa-plus mr-1 pr-1"></i>お絵描き投稿</a>
               <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-secondary px-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
               </a>

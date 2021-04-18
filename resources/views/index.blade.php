@@ -33,14 +33,10 @@
     <div class="block01_bg"></div>
   </a>
 
-
-
   @endforeach
-
-
-
 
 </div>
 
+<p>{{ $illustrations->links('vendor.pagination.default') }}</p>
 
 @endsection

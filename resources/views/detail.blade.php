@@ -6,7 +6,7 @@
 
 <div class="block02_img">
 <img src="{{ $illustration->filename }}" id="canvasImg">
-<p class="mt-3">Posted by {{ $user_name->name }}</p>
+<p class="mt-3"><i class="fas fa-pencil-alt mr-3"></i>Posted by {{ $user_name->name }}</p>
 </div>
 
 <div class="block02_item">
@@ -46,7 +46,7 @@
 <p class="block02_title">コメント投稿</p>
 {{ Form::open(['route' => ['illustration.addComment', $illustration->id]]) }}
     <textarea class="form-control" name='add_comment' placeholder="コメント入力" rows="2">{{ old('content') }}</textarea>
-    <button class="btn btn-secondary mt-3" type="submit">投稿</button>
+    <button class="btn btn-info btn-block mt-5" type="submit">投稿</button>
 {{ Form::close() }}
 
 </div>
