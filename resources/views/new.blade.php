@@ -35,8 +35,8 @@
   <div id="result"><img src=""></div>
 
   <div>
-      <div class="col-12">
-      <label><i class="fas fa-comment mr-1"></i>投稿者コメント</label>
+      <div class="w-100">
+      <label><i class="fas fa-comment mr-1"></i>投稿者コメント（50文字まで）</label>
       </div>
     <div class="form-group w-100">
       <textarea class="form-control" name="comment" rows="2" cols="20" placeholder="コメントを入力" required></textarea>

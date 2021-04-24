@@ -130,6 +130,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  padding: 3px 5px;
 }
 
 .likes-detail {
@@ -226,9 +227,42 @@
   list-style: none;
   border-radius: .25rem;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 40px;
   > li {
-    font-size: 1.4rem;
-    padding: 0 5px;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    &.active {
+      font-weight: bold;
+    }
   }
+  > li a {
+    color: #333;
+  }
+}
+
+.headerNavSp {
+  @include mq(s) {
+	  position: fixed;
+    top: 54px;
+    right: 0;
+	}
+}
+
+.headerNavPc {
+  display: flex!important;
+  @include mq(s) {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0!important;
+    background-color: #17a2b8!important;
+    color: #fff!important;
+    height: 45px;
+    font-size: 2.0rem;
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+	}
 }

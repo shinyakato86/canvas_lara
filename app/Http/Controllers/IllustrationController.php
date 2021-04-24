@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreIllustration;
+use App\Http\Requests\AddComment;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -169,27 +170,36 @@ public function index(Request $request)
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Projectlist  $projectlist
+     * @param  \App\Illustration  $Illustration
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $projectlist = Projectlist::find($id);
-        $creators = Creators::find($id);
+        $illustration = Illustration::where('id',$id)->first();
+        $comment = Comment::where('illustrations_id',$id)->get();
+        $like = Like::where('illustration_id',$id)->get();
 
-        $projectlist->delete();
-        $creators->delete();
-        return redirect('/projectlist');
+        $illustration->delete();
+
+        if (!$like->isEmpty()) {
+            $like->each->delete();
+        }
+        
+        if (!$comment->isEmpty()) {
+            $comment->each->delete();
+        }
+
+        return redirect('/');
     }
 
 
     /**
      * コメント投稿
      * @param Illustration $illustration
-     * @param StoreComment $request
+     * @param AddComment $request
      * @return \Illuminate\Http\Response
      */
-    public function addComment($id)
+    public function addComment(AddComment $request, $id)
     {
         $comment = new Comment();
         $comment->comment = request('add_comment');

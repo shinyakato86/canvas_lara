@@ -19,25 +19,27 @@
 <body>
   <div id="app">
     <header class="header">
-      <nav class='headerNav navbar navbar-expand-md navbar-dark'> <a class='' href={{route( 'index')}}><img src="{{ asset('img\mainLogo.png') }}"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <nav class='headerNav navbar navbar-dark'>
+      <a class='' href={{route( 'index')}}><img src="{{ asset('img\mainLogo.png') }}"></a>
+        <div class="d-flex" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto"> </ul>
           <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->@guest
+          <ul class="d-flex ml-auto">
+            <!-- Authentication Links -->
+            <a class="btn-outline-info btn mr-5 d-flex align-items-center px-5 headerNavPc" href="{{ route('illustration.new') }}"><i class="fas fa-plus mr-1 pr-1"></i>お絵描き投稿</a>
+            @guest
             <li class="nav-item">
-            <a class="btn mr-3" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+            <a class="btn-secondary btn" href="{{ route('login') }}">{{ __('ログイン / 新規登録') }}</a>
             </li>
+            <!--
             @if (Route::has('register'))
             <li class="nav-item">
             <a class="btn-secondary btn" href="{{ route('register') }}">{{ __('新規登録') }}</a>
             </li>
+            -->
             @endif @else
             <li class="nav-item dropdown  navBtn">
-            <a class="btn-outline-secondary btn mr-5 d-flex align-items-center px-5" href="{{ route('illustration.new') }}"><i class="fas fa-plus mr-1 pr-1"></i>お絵描き投稿</a>
               <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-secondary px-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
               </a>

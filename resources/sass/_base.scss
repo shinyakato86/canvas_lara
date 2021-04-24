@@ -117,4 +117,7 @@ body {
 
 body {
 	min-height: 100vh;
+	@include mq(s) {
+		margin-bottom: 45px;
+	}
 }

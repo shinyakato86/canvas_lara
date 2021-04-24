@@ -1,12 +1,18 @@
 @extends('layout')
 
 @section('content')
+<h2 class="heading02">お絵描き投稿詳細</h2>
 
 <div class="block02">
 
 <div class="block02_img">
 <img src="{{ $illustration->filename }}" id="canvasImg">
 <p class="mt-3"><i class="fas fa-pencil-alt mr-3"></i>Posted by {{ $user_name->name }}</p>
+
+{{ Form::open(['method' => 'delete', 'route' => ['illustration.destroy', $illustration->id]]) }}
+  {{ Form::submit('削除', ['class' => 'btn mt-5 btn-danger']) }}
+{{ Form::close() }}
+
 </div>
 
 <div class="block02_item">
@@ -43,24 +49,17 @@
     </div>
 @endforeach
 
-<p class="block02_title">コメント投稿</p>
+<p class="block02_title">コメント</p>
 {{ Form::open(['route' => ['illustration.addComment', $illustration->id]]) }}
-    <textarea class="form-control" name='add_comment' placeholder="コメント入力" rows="2">{{ old('content') }}</textarea>
-    <button class="btn btn-info btn-block mt-5" type="submit">投稿</button>
+    <textarea class="form-control mb-3" name='add_comment' placeholder="コメント入力" rows="2">{{ old('content') }}</textarea>
+    @foreach ($errors->all() as $error)
+    <p class="errorText">※{{ $error }}</p>
+    @endforeach
+    <button class="btn btn-info btn-block mt-5" type="submit">コメント投稿</button>
 {{ Form::close() }}
 
 </div>
 
-
-
-
-
 </div>
-
-
-
-
-
-
 
 @endsection
