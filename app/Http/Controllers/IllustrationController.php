@@ -47,8 +47,6 @@ public function index(Request $request)
     {
         $illustration = new Illustration;
 
-
-
         return view('new');
 
     }
@@ -81,14 +79,14 @@ public function index(Request $request)
     /**
      * Display the specified resource.
      *
-     * @param  \App\ifrojectlist  $projectlist
+     * @param  \App\Illustration $illustration
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $illustration = Illustration::find($id);
 
-        $user_id = Illustration::find($id)->pluck('user_id');
+        $user_id = Illustration::where('id', $id)->pluck('user_id');
 
         $user_name = User::where('id', $user_id)->first();
 
@@ -108,69 +106,30 @@ public function index(Request $request)
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Projectlist  $projectlist
+     * @param  \App\Illustration  $illustration
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $projectlist = Projectlist::find($id);
-        $creators = Creators::all()->where('id',$id);
 
-        $users = \DB::table('users')->pluck('name');
-
-        $categories = \DB::table('categories')->pluck('category_name');
-
-        $departments = \DB::table('departments')->pluck('department_name');
-
-        $status = \DB::table('status')->pluck('status_name');
-
-        $clients = \DB::table('clients')->pluck('client_name');
-
-        return view('edit', compact('projectlist', 'creators', 'users', 'categories', 'departments', 'status', 'clients'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Projectlist  $Projectlist
+     * @param  \App\Illustration  $illustration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Projectlist $projectlist)
+    public function update(Request $request, $id, illustration $Illustration)
     {
-        $projectlist= Projectlist::find($id);
-        $projectlist->project_name = request('project_name');
-        $projectlist->department_name = request('department_name');
-        $projectlist->sales_name = request('sales_name');
-        $projectlist->client_name = request('client_name');
-        $projectlist->price = request('price');
-        $projectlist->status = request('status');
-        $projectlist->accounting_date = request('accounting_date');
-        $projectlist->save();
 
-        $old_creators = Creators::find($id);
-        $old_creators->delete();
-
-        $data = [];
-
-        for ($i=0; $i < count(request('creator_name')); $i++) {
-
-          $data[]= array ('creator_name'=>$request['creator_name'][$i],
-                          'id'=>$projectlist->id,
-                          'creator_price'=>$request['creator_price'][$i],
-                          'creator_category'=>$request['creator_category'][$i]);
-
-        }
-
-        DB::table('creators')->insert($data);
-
-        return redirect()->route('projectlist.detail', ['id' => $projectlist->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Illustration  $Illustration
+     * @param  \App\Illustration  $illustration
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -212,33 +171,26 @@ public function index(Request $request)
         return redirect()->route('illustration.detail', ['id' => $comment->illustrations_id]);
     }
 
-
-
-
-
-
-
-
     public function like(Request $request)
-{
-    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
-    $illustration_id = $request->illustration_id; //2.投稿idの取得
+    {
+    $user_id = Auth::user()->id; //ログインユーザーのid取得
+    $illustration_id = $request->illustration_id; //投稿idの取得
     $already_liked = Like::where('user_id', $user_id)->where('illustration_id', $illustration_id)->first(); //3.
 
     if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
-        $like = new Like; //4.Likeクラスのインスタンスを作成
-        $like->illustration_id = $illustration_id; //Likeインスタンスにreview_id,user_idをセット
+        $like = new Like; //Likeクラスのインスタンスを作成
+        $like->illustration_id = $illustration_id; //Likeインスタンスにillustration_id,user_idをセット
         $like->user_id = $user_id;
         $like->save();
     } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
         Like::where('illustration_id', $illustration_id)->where('user_id', $user_id)->delete();
     }
-    //5.この投稿の最新の総いいね数を取得
+    //この投稿の最新の総いいね数を取得
     $illustration_likes_count = Illustration::withCount('likes')->findOrFail($illustration_id)->likes_count;
     $param = [
         'illustration_likes_count' => $illustration_likes_count
     ];
-    return response()->json($param); //6.JSONデータをjQueryに返す
+    return response()->json($param); //JSONデータをjQueryに返す
 }
 
 }

@@ -8,10 +8,13 @@
 <div class="block02_img">
 <img src="{{ $illustration->filename }}" id="canvasImg">
 <p class="mt-3"><i class="fas fa-pencil-alt mr-3"></i>Posted by {{ $user_name->name }}</p>
-
+@auth
+  @if ($illustration->user_id === Auth::user()->id)
 {{ Form::open(['method' => 'delete', 'route' => ['illustration.destroy', $illustration->id]]) }}
-  {{ Form::submit('削除', ['class' => 'btn mt-5 btn-danger']) }}
+  {{ Form::submit('削除', ['class' => 'btn mt-3 btn-danger']) }}
 {{ Form::close() }}
+  @endif
+@endauth
 
 </div>
 

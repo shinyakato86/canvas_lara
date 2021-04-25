@@ -6299,6 +6299,12 @@ body {
   min-height: 100vh;
 }
 
+@media only screen and (max-width: 767px) {
+  body {
+    margin-bottom: 45px;
+  }
+}
+
 .footer {
   align-items: center;
   border-top: 1px solid #dbdbdb;
@@ -6312,11 +6318,13 @@ body {
 .footer_inner {
   width: 96%;
   margin: auto 0;
+  text-align: center;
 }
 
 .footer_copy {
   text-align: center;
   color: #fff;
+  font-size: 1.2rem;
 }
 
 /* ===========================================================================
@@ -7382,6 +7390,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  padding: 3px 5px;
 }
 
 .likes-detail {
@@ -7486,12 +7495,50 @@ body {
   list-style: none;
   border-radius: 0.25rem;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .pagination > li {
-  font-size: 1.4rem;
-  padding: 0 5px;
+  font-size: 1.5rem;
+  padding: 0 10px;
+}
+
+.pagination > li.active {
+  font-weight: bold;
+}
+
+.pagination > li a {
+  color: #333;
+}
+
+@media only screen and (max-width: 767px) {
+  .headerNavSp {
+    position: fixed;
+    top: 54px;
+    right: 0;
+  }
+}
+
+.headerNavPc {
+  display: flex !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .headerNavPc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0 !important;
+    background-color: #17a2b8 !important;
+    color: #fff !important;
+    height: 45px;
+    font-size: 2rem;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 

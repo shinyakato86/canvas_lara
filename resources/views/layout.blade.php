@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'LaraDraw') }}</title>
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/canvas.js') }}" defer></script>
@@ -30,7 +30,7 @@
             <a class="btn-outline-info btn mr-5 d-flex align-items-center px-5 headerNavPc" href="{{ route('illustration.new') }}"><i class="fas fa-plus mr-1 pr-1"></i>お絵描き投稿</a>
             @guest
             <li class="nav-item">
-            <a class="btn-secondary btn" href="{{ route('login') }}">{{ __('ログイン / 新規登録') }}</a>
+            <a class="btn-secondary btn" href="{{ route('login') }}">{{ __('ログイン') }}</a>
             </li>
             <!--
             @if (Route::has('register'))

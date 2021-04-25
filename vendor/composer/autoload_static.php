@@ -543,6 +543,8 @@ class ComposerStaticInit83ab02e3965c8b8543fc9556e5b31e30
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\AddComment' => __DIR__ . '/../..' . '/app/Http/Requests/AddComment.php',
+        'App\\Http\\Requests\\StoreIllustration' => __DIR__ . '/../..' . '/app/Http/Requests/StoreIllustration.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Illustration' => __DIR__ . '/../..' . '/app/Models/Illustration.php',
         'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',

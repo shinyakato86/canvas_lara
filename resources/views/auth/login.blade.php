@@ -51,9 +51,12 @@
                             </div>
                         </div>
                         -->
-                        <div class="form-group row mb-0 mt-5">
+                        <div class="form-group row mb-0">
                             <div class="w-100 ta-center">
-                                <button type="submit" class="btn btn-secondary">
+                                <p>メールアドレス：test@co.jp</p>
+                                <p>パスワード：password</p>
+                                <p>上記でログインできます。</p>
+                                <button type="submit" class="btn btn-secondary mt-3">
                                     {{ __('ログイン') }}
                                 </button>
                                 <!--
