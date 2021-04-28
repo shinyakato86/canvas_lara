@@ -36,7 +36,7 @@
 @endauth
 @guest
   <span class="likes-detail">
-      <i class="fas fa-heart heart"></i>
+      <i class="fas fa-heart heart like-guest"></i>
     <span class="like-counter">{{$illustration_likes_count}}</span>
   </span><!-- /.likes -->
 @endguest
